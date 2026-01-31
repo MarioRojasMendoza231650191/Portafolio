@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Proyectos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #e4b5b5 0%, #b3686e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .proyectos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .proyecto {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .proyecto:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .proyecto-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .proyecto-header h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .proyecto-header p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .proyecto-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .proyecto-descripcion {
+            color: #333;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .proyecto-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .proyecto-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            opacity: 0.8;
+        }
+
+        .sylvanian-header {
+            background: linear-gradient(135deg, #eb9797 0%, #f0696f 100%);
+        }
+
+        .sylvanian-btn {
+            background: linear-gradient(135deg, #eb9797 0%, #f0696f 100%);
+        }
+
+        .techcorp-header {
+            background: linear-gradient(135deg, #FFE6F2 0%, #FFCCE6 100%);
+            color: #333;
+        }
+
+        .techcorp-btn {
+            background: linear-gradient(135deg, #FFE6F2 0%, #FFCCE6 100%);
+            color: #333;
+            border: 2px solid #ff69b4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Proyectos en html</h1>
+        
+        <div class="proyectos-grid">
+            <!-- Proyecto Sylvanian -->
+            <a href="sylvanian/index.html" class="proyecto" style="text-decoration: none;">
+                <div class="proyecto-header sylvanian-header">
+                    <h2>Maquina Sylvanians</h2>
+                    <p>Tienda de productos</p>
+                </div>
+                <div class="proyecto-content">
+                    <p class="proyecto-descripcion">
+                        Una tienda interactiva de juguetes Sylvanian Families 
+                        Con carrito de compras y sistema de notificaciones
+                    </p>
+                    <button class="proyecto-btn sylvanian-btn">Ir al Proyecto →</button>
+                </div>
+            </a>
+
+            <!-- Proyecto TechCorp -->
+            <a href="techcorp/TechCorp.html" class="proyecto" style="text-decoration: none;">
+                <div class="proyecto-header techcorp-header">
+                    <h2>TechCorp</h2>
+                    <p>Interfaz interactiva</p>
+                </div>
+                <div class="proyecto-content">
+                    <p class="proyecto-descripcion">
+                        Una interfaz de CRUD hecha para una practica escolar, 
+                        con controles de música y efectos visuales.
+                    </p>
+                    <button class="proyecto-btn techcorp-btn">Ir al Proyecto →</button>
+                </div>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>Mario Rojas Mendoza</p>
+        </div>
+    </div>
+</body>
+</html>

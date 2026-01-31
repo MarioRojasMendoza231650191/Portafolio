@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máquina Sylvanians</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="assets/images/Titulo.png" alt="Título Sylvanians" class="titulo">
+            <a href="carrito.html" class="enlace-carrito">🛒 Ver Carrito</a>
+            <a href="ayuda.html" class="enlace-ayuda">❓ Ayuda</a>
+        </header>
+
+        <main class="productos-grid">
+            <div class="producto">
+                <img src="assets/images/sylvanian1.png" alt="Sylvanian 1" class="imagen-producto">
+                <button class="btn-comprar" data-producto="1">Comprar</button>
+            </div>
+
+            <div class="producto">
+                <img src="assets/images/sylvanian2.png" alt="Sylvanian 2" class="imagen-producto">
+                <button class="btn-comprar" data-producto="2">Comprar</button>
+            </div>
+
+            <div class="producto">
+                <img src="assets/images/sylvanian3.png" alt="Sylvanian 3" class="imagen-producto">
+                <button class="btn-comprar" data-producto="3">Comprar</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de confirmación de compra -->
+    <div id="modal" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar">&times;</span>
+            <h2>Confirmación de Compra</h2>
+            <p id="mensaje-modal">¿Deseas comprar este producto?</p>
+            <div class="modal-botones">
+                <button id="btn-confirmar" class="btn-confirmar">Confirmar</button>
+                <button id="btn-cancelar" class="btn-cancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificación de compra exitosa -->
+    <div id="notificacion" class="notificacion">
+        <p id="texto-notificacion">¡Compra realizada exitosamente!</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

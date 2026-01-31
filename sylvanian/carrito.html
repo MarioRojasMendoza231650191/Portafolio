@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Máquina Sylvanians</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(255, 225, 233);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .contenido {
+            padding: 30px;
+        }
+
+        .carrito-vacio {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .carrito-vacio img {
+            width: 80px;
+            opacity: 0.5;
+            margin-bottom: 20px;
+        }
+
+        .carrito-vacio p {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .items-carrito {
+            margin-bottom: 30px;
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            animation: slideIn 0.3s ease;
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-nombre {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .item-fecha {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .item-precio {
+            font-weight: bold;
+            color: #ff69b4;
+            font-size: 16px;
+            margin-right: 15px;
+        }
+
+        .btn-eliminar {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-eliminar:hover {
+            background-color: #ff5252;
+        }
+
+        .resumen {
+            background-color: rgb(255, 225, 233);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .resumen-fila {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .resumen-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 18px;
+            color: #ff69b4;
+            border-top: 2px solid #ddd;
+            padding-top: 10px;
+        }
+
+        .botones {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-vaciar {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .btn-vaciar:hover {
+            background-color: #aaa;
+        }
+
+        .btn-comprar {
+            background-color: #ff69b4;
+            color: white;
+        }
+
+        .btn-comprar:hover {
+            background-color: #ff1493;
+            transform: scale(1.02);
+        }
+
+        .btn-volver {
+            background-color: #666;
+            color: white;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .btn-volver:hover {
+            background-color: #333;
+        }
+
+        .notificacion {
+            background-color: #4caf50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .botones {
+                grid-template-columns: 1fr;
+            }
+
+            .item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .item-precio,
+            .btn-eliminar {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛒 Mi Carrito</h1>
+            <p>Máquina Sylvanians</p>
+            <a href="ayuda.html" style="position: absolute; top: 15px; right: 15px; background-color: #ffa500; color: white; text-decoration: none; padding: 8px 12px; border-radius: 5px; font-size: 12px;">❓ Ayuda</a>
+        </header>
+
+        <div class="contenido">
+            <div id="notificacionContenedor"></div>
+
+            <div id="carritoVacio" class="carrito-vacio">
+                <p>Tu carrito está vacío</p>
+                <p style="font-size: 14px; color: #999;">Regresa a la tienda para agregar productos</p>
+            </div>
+
+            <div id="carritoLleno" style="display: none;">
+                <div class="items-carrito" id="itemsCarrito"></div>
+
+                <div class="resumen">
+                    <div class="resumen-fila">
+                        <span>Productos:</span>
+                        <span id="totalProductos">0</span>
+                    </div>
+                    <div class="resumen-fila">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="resumen-total">
+                        <span>Total:</span>
+                        <span id="total">$0.00</span>
+                    </div>
+                </div>
+
+                <div class="botones">
+                    <button class="btn btn-vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button>
+                    <button class="btn btn-comprar" onclick="procesarCompra()">Procesar Compra</button>
+                </div>
+            </div>
+
+            <button class="btn btn-volver" onclick="window.location.href='index.html'">← Volver a la Tienda</button>
+        </div>
+    </div>
+
+    <script>
+        // Cargar y mostrar el carrito
+        let carrito = [];
+
+        function cargarCarrito() {
+            const carritoGuardado = localStorage.getItem('carrito_sylvanians');
+            if (carritoGuardado) {
+                carrito = JSON.parse(carritoGuardado);
+            }
+            mostrarCarrito();
+        }
+
+        function mostrarCarrito() {
+            const carritoVacio = document.getElementById('carritoVacio');
+            const carritoLleno = document.getElementById('carritoLleno');
+            const itemsCarrito = document.getElementById('itemsCarrito');
+
+            if (carrito.length === 0) {
+                carritoVacio.style.display = 'block';
+                carritoLleno.style.display = 'none';
+            } else {
+                carritoVacio.style.display = 'none';
+                carritoLleno.style.display = 'block';
+
+                // Mostrar items
+                itemsCarrito.innerHTML = '';
+                carrito.forEach((item, index) => {
+                    const itemHTML = `
+                        <div class="item">
+                            <div class="item-info">
+                                <div class="item-nombre">${item.nombre}</div>
+                                <div class="item-fecha">${item.fecha}</div>
+                            </div>
+                            <div class="item-precio">${item.precio}</div>
+                            <button class="btn-eliminar" onclick="eliminarDelCarrito(${index})">Eliminar</button>
+                        </div>
+                    `;
+                    itemsCarrito.innerHTML += itemHTML;
+                });
+
+                // Actualizar resumen
+                document.getElementById('totalProductos').textContent = carrito.length;
+                document.getElementById('subtotal').textContent = calcularTotal();
+                document.getElementById('total').textContent = calcularTotal();
+            }
+        }
+
+        function calcularTotal() {
+            let total = 0;
+            carrito.forEach(item => {
+                const precio = parseFloat(item.precio.replace('$', ''));
+                total += precio;
+            });
+            return '$' + total.toFixed(2);
+        }
+
+        function eliminarDelCarrito(index) {
+            carrito.splice(index, 1);
+            localStorage.setItem('carrito_sylvanians', JSON.stringify(carrito));
+            mostrarCarrito();
+            mostrarNotificacion('Producto eliminado del carrito');
+        }
+
+        function vaciarCarrito() {
+            if (confirm('¿Estás seguro de que deseas vaciar el carrito?')) {
+                carrito = [];
+                localStorage.removeItem('carrito_sylvanians');
+                mostrarCarrito();
+                mostrarNotificacion('Carrito vaciado');
+            }
+        }
+
+        function procesarCompra() {
+            if (carrito.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+
+            const total = calcularTotal();
+            if (confirm(`¿Deseas proceder con la compra?\nTotal: ${total}`)) {
+                mostrarNotificacion('¡Compra procesada exitosamente! Gracias por tu compra.');
+                setTimeout(() => {
+                    carrito = [];
+                    localStorage.removeItem('carrito_sylvanians');
+                    mostrarCarrito();
+                }, 2000);
+            }
+        }
+
+        function mostrarNotificacion(mensaje) {
+            const contenedor = document.getElementById('notificacionContenedor');
+            const notif = document.createElement('div');
+            notif.className = 'notificacion';
+            notif.textContent = mensaje;
+            contenedor.innerHTML = '';
+            contenedor.appendChild(notif);
+
+            setTimeout(() => {
+                notif.remove();
+            }, 3000);
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', cargarCarrito);
+    </script>
+</body>
+</html>
