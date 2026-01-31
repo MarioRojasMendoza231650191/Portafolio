@@ -131,11 +131,53 @@
             color: #333;
             border: 2px solid #ff69b4;
         }
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-section h1 {
+            margin-bottom: 0;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .portafolio-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .portafolio-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .portafolio-btn:active {
+            transform: scale(0.98);
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Proyectos en html</h1>
+        <div class="header-section">
+            <h1>Proyectos en html</h1>
+            <a href="Portafolio.pdf" download class="portafolio-btn">📄 Descargar CV</a>
+        </div>
         
         <div class="proyectos-grid">
             <!-- Proyecto Sylvanian -->
