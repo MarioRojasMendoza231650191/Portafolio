@@ -1,8 +1,8 @@
-# 🎨 Portafolio de Proyectos
+# Portafolio de Proyectos
 
 Bienvenido a mi portafolio de proyectos web. Este repositorio contiene múltiples proyectos showcaseando diferentes tecnologías y conceptos de desarrollo web.
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 Portafolio/
@@ -27,17 +27,15 @@ Portafolio/
         └── audio/           # Archivos de audio (música de fondo)
 ```
 
-## 🚀 Proyectos Incluidos
+## Proyectos Incluidos
 
-### 1. **Máquina Sylvanians** 🧸
-Una tienda interactiva de figuras coleccionables Sylvanian.
+### 1. **Maquina Sylvanians**
+Ejercicio de punto de venta para una tienda de juguetes.
 
 **Características:**
 - Grid responsivo de productos
 - Sistema de carrito de compras
-- Modales de confirmación
 - Notificaciones de compra exitosa
-- Almacenamiento en localStorage
 - Interfaz amigable y colorida
 
 **Tecnologías:** HTML5, CSS3, JavaScript Vanilla
@@ -48,14 +46,12 @@ Una tienda interactiva de figuras coleccionables Sylvanian.
 
 ---
 
-### 2. **TechCorp** 💻
-Interfaz de escritorio simulada con múltiples pestañas y controles interactivos.
+### 2. **TechCorp** 
+Ejercicio de un CRUD para administrar la base de datos de una empresa.
 
 **Características:**
 - Sistema de pestañas funcionales
-- Controles de música
 - Efectos visuales animados
-- Diseño futurista
 - Reproducción de audio de fondo
 
 **Tecnologías:** HTML5, CSS3, JavaScript Vanilla
@@ -66,9 +62,9 @@ Interfaz de escritorio simulada con múltiples pestañas y controles interactivo
 
 ---
 
-## 🎯 Cómo Usar Este Portafolio
+## Cómo ver los proyectos de este portafolio
 
-### Opción 1: Landing Page (Recomendado)
+### Opción 1: Landing Page
 1. Abre `index.html` en tu navegador
 2. Verás una página de inicio con enlaces a todos los proyectos
 3. Haz clic en cualquier proyecto para explorarlo
@@ -76,104 +72,3 @@ Interfaz de escritorio simulada con múltiples pestañas y controles interactivo
 ### Opción 2: Acceso Directo
 - **Sylvanian:** Abre `sylvanian/index.html`
 - **TechCorp:** Abre `techcorp/TechCorp.html`
-
----
-
-## 📋 Características Principales
-
-### Organización
-✅ Cada proyecto está en su propia carpeta independiente
-✅ Rutas relativas para facilitar portabilidad
-✅ Documentación completa para cada proyecto
-✅ Estructura clara y fácil de mantener
-
-### Tecnologías
-✅ HTML5 semántico
-✅ CSS3 con animaciones y gradientes
-✅ JavaScript Vanilla (sin dependencias externas)
-✅ localStorage para persistencia de datos
-✅ Diseño responsive y mobile-friendly
-
-### Funcionalidades
-✅ Interfaz interactiva
-✅ Gestión de estado
-✅ Validación de datos
-✅ Experiencia de usuario mejorada
-
----
-
-## 📱 Compatibilidad
-
-- ✅ Chrome/Edge 90+
-- ✅ Firefox 88+
-- ✅ Safari 14+
-- ✅ Navegadores móviles modernos
-- ✅ Tablets
-
----
-
-## 🎨 Diseño
-
-### Colores del Portafolio
-- **Primario:** Morado (`#667eea`)
-- **Secundario:** Púrpura (`#764ba2`)
-
-### Colores Sylvanian
-- **Primario:** Rosa (`#ff69b4`)
-- **Secundario:** Rosa Oscuro (`#ff1493`)
-- **Fondo:** Rosa Pálido (`rgb(255, 225, 233)`)
-
-### Colores TechCorp
-- **Tema:** Pastel Rosa/Púrpura
-
----
-
-## 🔧 Requisitos
-
-- Navegador web moderno con soporte para:
-  - ES6+ JavaScript
-  - CSS Grid y Flexbox
-  - localStorage API
-  - Audio HTML5
-
----
-
-## 📚 Documentación Adicional
-
-Cada proyecto incluye su propio archivo README:
-- [Sylvanian README](sylvanian/README.md)
-- [TechCorp README](techcorp/README.md) *(crear si es necesario)*
-
----
-
-## 💡 Mejoras Futuras
-
-- [ ] Agregar más proyectos
-- [ ] Implementar animaciones avanzadas
-- [ ] Agregar soporte para múltiples idiomas
-- [ ] Crear versión backend
-- [ ] Agregar tests automatizados
-
----
-
-## 👤 Autor
-
-**Mario** - Proyecto Personal de Portafolio
-
----
-
-## 📄 Licencia
-
-Este proyecto es personal y educativo.
-
----
-
-## 🤝 Contacto
-
-*Información de contacto disponible en los proyectos individuales.*
-
----
-
-**Última actualización:** 31 de Enero de 2026
-
-¡Gracias por revisar mi portafolio! 🎉

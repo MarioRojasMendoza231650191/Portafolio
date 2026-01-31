@@ -9,7 +9,6 @@ Tienda interactiva de figuras coleccionables Sylvanian con sistema de carrito de
 sylvanian/
 ├── index.html           # Página principal de la tienda
 ├── carrito.html         # Página del carrito de compras
-├── ayuda.html           # Página de ayuda y documentación
 ├── script.js            # Lógica de JavaScript (compras, carrito)
 ├── styles.css           # Estilos CSS
 ├── README.md            # Este archivo
@@ -40,9 +39,6 @@ Página que muestra los productos agregados al carrito con:
 - Cálculo automático de totales
 - Opción de eliminar items
 - Resumen de compra
-
-### ayuda.html
-Página con guía completa de uso, solución de problemas y personalizaciones.
 
 ### script.js
 Contiene toda la lógica de:
@@ -76,7 +72,6 @@ Todas las imágenes y recursos usan rutas relativas dentro de la carpeta `assets
 <!-- Enlaces internos -->
 <a href="index.html">Tienda</a>
 <a href="carrito.html">Carrito</a>
-<a href="ayuda.html">Ayuda</a>
 ```
 
 ## Cómo Usar
@@ -85,7 +80,6 @@ Todas las imágenes y recursos usan rutas relativas dentro de la carpeta `assets
 2. Explora los productos disponibles
 3. Haz clic en "Comprar" para agregar items al carrito
 4. Ve al carrito para revisar tu compra
-5. Consulta la sección de ayuda para más información
 
 ## Datos de Productos
 
