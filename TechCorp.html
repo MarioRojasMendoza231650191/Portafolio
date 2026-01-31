@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechCorp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #FFE6F2 0%, #FFCCE6 50%, #FFB3DA 100%);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        .top-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .gif-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 6px 10px;
+            border-radius: 8px;
+        }
+
+        .toolbar-label {
+            color: #3b0f2a;
+            font-weight: bold;
+        }
+
+        .tabs-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 6px;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 8px 16px;
+            border: none;
+            background: linear-gradient(#ffb3d9, #ff8fcf);
+            color: white;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(#ff7fc2, #ff5fa8);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .tab-content.catalogos {
+            background: linear-gradient(#FFD1EB, #FF9FD9);
+        }
+
+        .tab-content.personal {
+            background: linear-gradient(#FFDCCF, #FFB199);
+        }
+
+        .tab-content.proveedores {
+            background: linear-gradient(#DFFFEF, #A8F7D6);
+        }
+
+        .tab-content.productos {
+            background: linear-gradient(#FFF3D6, #FFD07A);
+        }
+
+        .tab-content.movimientos {
+            background: linear-gradient(#EBD9FF, #C79BFF);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            background-color: rgba(255, 255, 255, 0.98);
+            border: 2px solid #ffb3d9;
+            border-radius: 6px;
+            padding: 6px;
+            font-size: 14px;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .button {
+            background: linear-gradient(#FFB199, #FF8A6F);
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .tab-content.catalogos .button {
+            background: linear-gradient(#FF9FD9, #FF7FC2);
+            color: white;
+        }
+
+        .tab-content.personal .button {
+            background: linear-gradient(#FFB199, #FF8A6F);
+            color: white;
+        }
+
+        .tab-content.proveedores .button {
+            background: linear-gradient(#A8F7D6, #6FEFB0);
+            color: #05321a;
+        }
+
+        .tab-content.productos .button {
+            background: linear-gradient(#FFD07A, #FFB84D);
+            color: #3b2a00;
+        }
+
+        .tab-content.movimientos .button {
+            background: linear-gradient(#C79BFF, #A96FFF);
+            color: white;
+        }
+
+        .list-container {
+            background-color: rgba(255, 255, 255, 0.98);
+            border: 2px solid #ffb3d9;
+            border-radius: 6px;
+            overflow-y: auto;
+            flex: 1;
+            min-height: 150px;
+        }
+
+        .list-item {
+            padding: 8px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .bottom-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ffb3d9;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Top Section -->
+        <div class="top-container">
+            <div class="gif-box">
+                <img src="assets/images/TechCorp.gif" alt="TechCorp Logo" style="width: 300px; height: 100px; border-radius: 8px;">
+            </div>
+            <div class="toolbar">
+                <label class="toolbar-label">TechCorp</label>
+                <button class="button">Refrescar todo</button>
+                <button class="button">Música</button>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs-container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="0">Catálogos</button>
+                <button class="tab-btn" data-tab="1">Personal</button>
+                <button class="tab-btn" data-tab="2">Proveedores</button>
+                <button class="tab-btn" data-tab="3">Productos</button>
+                <button class="tab-btn" data-tab="4">Movimientos</button>
+            </div>
+
+            <!-- Tab: Catálogos -->
+            <div class="tab-content catalogos active" data-tab-content="0">
+                <div class="form-row">
+                    <label class="toolbar-label">Tabla:</label>
+                    <select>
+                        <option>puestos</option>
+                        <option>areas</option>
+                        <option>departamentos</option>
+                        <option>sucursales</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <input type="text" placeholder="Nombre">
+                    <button class="button">Agregar</button>
+                    <button class="button">Refrescar</button>
+                </div>
+                <div class="list-container">
+                    <div class="list-item">1 - Gerente</div>
+                    <div class="list-item">2 - Desarrollador</div>
+                    <div class="list-item">3 - Diseñador</div>
+                </div>
+                <button class="button">Eliminar seleccionado</button>
+            </div>
+
+            <!-- Tab: Personal -->
+            <div class="tab-content personal" data-tab-content="1" style="display: none;">
+                <div class="form-row">
+                    <input type="text" placeholder="Nombre">
+                    <input type="text" placeholder="Salario">
+                    <select>
+                        <option>ACTIVO</option>
+                        <option>INACTIVO</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <select placeholder="Puesto"></select>
+                    <select placeholder="Área"></select>
+                    <select placeholder="Departamento"></select>
+                    <select placeholder="Sucursal"></select>
+                </div>
+                <div class="form-row">
+                    <button class="button">Agregar</button>
+                    <button class="button">Refrescar</button>
+                </div>
+                <div class="list-container">
+                    <div class="list-item">1 - Juan Pérez - 50000 - ACTIVO</div>
+                    <div class="list-item">2 - María García - 45000 - ACTIVO</div>
+                    <div class="list-item">3 - Carlos López - 55000 - INACTIVO</div>
+                </div>
+                <button class="button">Eliminar seleccionado</button>
+            </div>
+
+            <!-- Tab: Proveedores -->
+            <div class="tab-content proveedores" data-tab-content="2" style="display: none;">
+                <div class="form-row">
+                    <input type="text" placeholder="Nombre">
+                    <input type="text" placeholder="Contacto">
+                </div>
+                <div class="form-row">
+                    <input type="text" placeholder="Teléfono">
+                    <input type="text" placeholder="Email">
+                    <button class="button">Agregar</button>
+                    <button class="button">Refrescar</button>
+                </div>
+                <div class="list-container">
+                    <div class="list-item">1 - Acme Corp - Juan Morales</div>
+                    <div class="list-item">2 - TechSupply - María González</div>
+                    <div class="list-item">3 - Industrial Ltd - Carlos Rodríguez</div>
+                </div>
+                <button class="button">Eliminar seleccionado</button>
+            </div>
+
+            <!-- Tab: Productos -->
+            <div class="tab-content productos" data-tab-content="3" style="display: none;">
+                <div class="form-row">
+                    <input type="text" placeholder="Nombre producto">
+                    <input type="text" placeholder="Existencia">
+                    <input type="text" placeholder="Punto reorden">
+                </div>
+                <div class="form-row">
+                    <select placeholder="Proveedor (id - nombre)"></select>
+                    <button class="button">Agregar</button>
+                    <button class="button">Refrescar</button>
+                </div>
+                <div class="list-container">
+                    <div class="list-item">1 - Laptop - Stock: 150</div>
+                    <div class="list-item">2 - Monitor - Stock: 200</div>
+                    <div class="list-item">3 - Teclado - Stock: 500</div>
+                </div>
+                <button class="button">Eliminar seleccionado</button>
+            </div>
+
+            <!-- Tab: Movimientos -->
+            <div class="tab-content movimientos" data-tab-content="4" style="display: none;">
+                <div class="form-row">
+                    <select placeholder="Empleado (id - nombre)"></select>
+                    <input type="text" placeholder="Tipo (ALTA/BAJA/CAMBIO)">
+                    <input type="text" placeholder="YYYY-MM-DD">
+                </div>
+                <div class="form-row">
+                    <input type="text" placeholder="Observaciones" style="flex: 1; min-width: 100px;">
+                    <button class="button">Agregar</button>
+                    <button class="button">Refrescar</button>
+                </div>
+                <div class="list-container">
+                    <div class="list-item">1 - Emp:1 - ALTA - 2024-01-15</div>
+                    <div class="list-item">2 - Emp:2 - CAMBIO - 2024-02-20</div>
+                    <div class="list-item">3 - Emp:3 - BAJA - 2024-03-10</div>
+                </div>
+                <button class="button">Eliminar seleccionado</button>
+            </div>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="bottom-container">
+            <img src="assets/images/Borde.gif" alt="Border" style="width: 600px; height: 200px; border-radius: 8px;">
+        </div>
+    </div>
+
+    <!-- Background Audio -->
+    <audio id="bgMusic" loop>
+        <source src="assets/audio/song.wav" type="audio/wav">
+    </audio>
+
+    <script>
+        // Tab Switching
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('[data-tab-content]');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const tabIndex = e.target.getAttribute('data-tab');
+                
+                // Remover active de todos los botones y pestañas
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    content.style.display = 'none';
+                });
+                
+                // Agregar active al botón y pestaña seleccionada
+                e.target.classList.add('active');
+                const selectedTab = document.querySelector(`[data-tab-content="${tabIndex}"]`);
+                if (selectedTab) {
+                    selectedTab.classList.add('active');
+                    selectedTab.style.display = 'flex';
+                }
+            });
+        });
+
+        // Music Control
+        const bgMusic = document.getElementById('bgMusic');
+        let musicPlaying = false;
+
+        const musicButtons = document.querySelectorAll('.toolbar button:nth-child(3)');
+        musicButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (musicPlaying) {
+                    bgMusic.pause();
+                    btn.textContent = 'Música';
+                } else {
+                    bgMusic.play();
+                    btn.textContent = 'Música (activa)';
+                }
+                musicPlaying = !musicPlaying;
+            });
+        });
+    </script>
+</body>
+</html>
